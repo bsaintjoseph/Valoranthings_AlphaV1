@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="quiz.css">
+    <title>Valoranthings</title>
+    <link rel="icon" href="images/valoicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/valoicon.png" type="image/x-icon">
+    <link rel="icon" href="images/valoicon.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/valoicon.png" sizes="128x128" type="image/png">
+</head>
+<body>
+    <audio autoplay loop id="myaudio">
+      <source src="music/lobbytheme.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+    <audio id="hover1" src="music/hover.mp3"></audio>
+    <audio id="hover2" src="music/hover.mp3"></audio>
+    <audio id="hover3" src="music/hover.mp3"></audio>
+    <audio id="hover4" src="music/hover.mp3"></audio>
+    
+    <header>
+      <nav class="main-nav">
+        <ul>
+            <h1>Valoranters</h1>
+            <li class="space"></li>
+
+            <a href="index.html">
+              <button class="btn" id="aboutBtn">
+                <span class="btn__inner">
+                  <span class="btn__slide"></span>
+                  <span class="btn__content">About</span>
+                </span>
+              </button>
+            </a>
+
+            <a href="lore.html">
+              <button class="btn" id="loreBtn">
+                <span class="btn__inner">
+                  <span class="btn__slide"></span>
+                  <span class="btn__content">Lore</span>
+                </span>
+              </button>
+            </a>
+
+            <a href="roles.html">
+              <button class="btn" id="rolesBtn">
+                <span class="btn__inner">
+                  <span class="btn__slide"></span>
+                  <span class="btn__content">Roles</span>
+                </span>
+              </button>
+            </a>
+
+            <a href="community.html">
+              <button class="btn" id="communityBtn">
+                <span class="btn__inner">
+                  <span class="btn__slide"></span>
+                  <span class="btn__content">Community</span>
+                </span>
+              </button>
+            </a>
+
+            <a href="quiz.html">
+              <button class="btn" id="communityBtn">
+                <span class="btn__inner">
+                  <span class="btn__slide"></span>
+                  <span class="btn__content">Quiz</span>
+                </span>
+              </button>
+            </a>
+          </span>
+        </ul>
+      </nav>
+    </header>
+    <br>
+    <section class="banner">
+      <!-- Slideshow container -->
+      <div class="slideshow-container">
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <img src="images/lorebanner1.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="images/lorebanner2.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="images/lorebanner3.jpg" style="width:100%">
+        </div>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center" class="hide-dots">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="quiz-container" id="quizContainer">
+      <div class="confirm" id="confirmation">
+      <p class="confirmation-text">Would you like to take the Valorant quiz?</p>
+      <div class="button-container">
+          <button class="btn" id="confirmBtn">
+            <span class="btn__inner">
+              <span class="btn__slide"></span>
+              <span class="btn__content">Yes</span>
+            </span>
+          </button>
+      </div>
+    </div>
+      <!-- Name Input Field and Submit Button -->
+      <form id="nameForm" class="name-input" style="display: none;">
+          <p class="entername">Please Enter your Name/Username:</p>
+          <input type="text" id="nameInput" placeholder="Enter your name" class="type-name" style="display: none;">
+          <button type="submit" class="name-submit-btn" style="display: none;">Submit</button>
+      </form>
+      <!-- Welcome Message and Begin Button (hidden by default) -->
+      <div class="welcome-message-container" style="display: none;">
+          <p class="welcome-message" style="display:none"></p>
+      </div>
+
+      <div id="quiz" class="quizzers" style="display: none;">
+        <div id="question" class="quizziz"></div>
+        <br>
+        <label>
+          <input type="radio" name="option" value="1" class="radio-input">
+          <span class="radio-custom"></span>
+          <span id="option1" class="radio-label">Option 1</span>
+        </label>
+        <br><br>
+        <label>
+          <input type="radio" name="option" value="2" class="radio-input">
+          <span class="radio-custom"></span>
+          <span id="option2" class="radio-label">Option 2</span>
+        </label>
+        <br><br>
+        <label>
+          <input type="radio" name="option" value="3" class="radio-input">
+          <span class="radio-custom"></span>
+          <span id="option3" class="radio-label">Option 3</span>
+        </label>
+        <br><br>
+        <label>
+          <input type="radio" name="option" value="4" class="radio-input">
+          <span class="radio-custom"></span>
+          <span id="option4" class="radio-label">Option 4</span>
+        </label>
+        <br><br>
+        <button class="btn" id="submitBtn">
+          <span class="btn__inner">
+            <span class="btn__slide"></span>
+            <span class="btn__content">Submit</span>
+          </span>
+        </button>
+      </div>
+      
+      <div id="result" class="resulters"></div>
+      </div>
+
+    
+    <main>
+    <br>
+      <section class="join">
+        <h2>Get Recruited Now!</h2>
+        <p>We could use some help in saving earth.</p>
+        <form>
+          <input type="email" name="email" placeholder="Type email & hit enter" required>
+        </form>
+      </section>
+    </main>
+    <footer>
+        <p class="copyright">Copyright 2023 Valoranters</p>
+    </footer>
+    <script>
+      //Volume for hover
+const audio = document.getElementById('myaudio');
+audio.volume = 0.25;
+      // Audio hover effect
+      const hoverAudios = document.querySelectorAll('.btn__content');
+      hoverAudios.forEach(btn => {
+          btn.addEventListener('mouseover', () => {
+              document.getElementById('hover1').play();
+          });
+      });
+  
+      // Slideshow script
+      let slideIndex = 0;
+      showSlides();
+  
+      function showSlides() {
+          let i;
+          const slides = document.getElementsByClassName("mySlides");
+          const dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {
+              slideIndex = 1;
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+          setTimeout(showSlides, 5000); // Change image every 5 seconds
+      }
+  
+      // Function to handle the click event of the "Yes" button
+document.getElementById('confirmBtn').addEventListener('click', function() {
+  // Hide the confirmation text and buttons
+  document.querySelector('.name-input').style.display = 'block';
+  document.querySelector('.name-submit-btn').style.display = 'none';
+  document.querySelector('.type-name').style.display = 'block';
+
+  // Show only the confirmation message
+  document.getElementById('confirmation').style.display = 'none';
+});
+
+// Function to handle the submission of the name form
+document.getElementById('nameForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Get the user's name from the input field
+  const name = document.getElementById('nameInput').value;
+
+  // Hide the name form
+  document.getElementById('nameForm').style.display = 'none';
+
+  // Display the welcome message
+  document.querySelector('.welcome-message-container').style.display = 'block';
+  const welcomeMessage = document.createElement('p');
+  welcomeMessage.textContent = 'Hello Agent ' + name + ', Let\'s test your knowledge. Press enter to continue.';
+  welcomeMessage.classList.add('welcome-message');
+  document.querySelector('.quiz-container .welcome-message-container').appendChild(welcomeMessage);
+  
+
+  // Function to handle the key press event
+function handleKeyPress(event) {
+  // Check if the pressed key is Enter (key code 13)
+  if (event.keyCode === 13) {
+      // Call the function to begin when Enter key is pressed
+      begin();
+  }
+}
+
+// Function to execute when Enter key is pressed
+function begin() {
+  console.log("Enter key pressed! Beginning...");
+  // Add your code here to begin whatever action you want
+  document.querySelector('.welcome-message-container').style.display = 'none';
+  document.querySelector('.welcome-message').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+}
+
+// Add event listener to the document for keydown event
+document.addEventListener("keydown", handleKeyPress);
+  document.querySelector('.quiz-container .welcome-message-container').appendChild(beginButton);
+
+  // Fade in welcome message and begin button
+  fadeIn(welcomeMessage);
+  fadeIn(beginButton);
+});
+
+// Function to fade in an element
+function fadeIn(element) {
+  element.style.opacity = 0;
+  let opacity = 0;
+  const fadeInInterval = setInterval(function() {
+      if (opacity < 1) {
+          opacity += 0.05; // Adjust the increment value to control fade speed
+          element.style.opacity = opacity;
+      } else {
+          clearInterval(fadeInInterval);
+      }
+  }, 50); // Adjust the interval value to control fade speed
+}
+
+const questions = [
+      {
+        question: "Which agent is a former member of the Kingdom of Morocco's Royal Family?",
+        options: ["Phoenix", "Killjoy", "Reyna", "Omen"],
+        answer: 1
+      },
+      {
+        question: "Which agent was once a successful astrophysicist before joining the Valorant Protocol?",
+        options: ["Astra", "Cypher", "Viper", "Breach"],
+        answer: 1
+      },
+      {
+        question: "Which agent has a deep connection to the Kingdom Corporation, a global power in the world of Valorant?",
+        options: ["Brimstone", "Sova", "Yoru", "Sage"],
+        answer: 4
+      },
+      {
+        question: "Which agent seeks revenge against the organization known as Nimble Navigators for the loss of their family?",
+        options: ["Phoenix", "Raze", "Jett", "Skye"],
+        answer: 2
+      },
+      {
+        question: "Which agent hails from Australia and has a background in engineering and robotics?",
+        options: ["Killjoy", "Reyna", "Omen", "Breach"],
+        answer: 1
+      },
+      {
+        question: "Which agent is associated with the Radiant Academy and is a master of manipulating light and shadow?",
+        options: ["Viper", "Astra", "Cypher", "Brimstone"],
+        answer: 2
+      },
+      {
+        question: "Which agent is on a mission to expose the truth behind the VALORANT Protocol and its mysterious origins?",
+        options: ["Sova", "Yoru", "Reyna", "Omen"],
+        answer: 4
+      },
+      {
+        question: "Which agent is linked to the Valorant Protocol's Project Ares, which aimed to create superhuman soldiers?",
+        options: ["Phoenix", "Jett", "Raze", "Breach"],
+        answer: 3
+      },
+      {
+        question: "Which agent's ultimate ability involves transforming into a celestial form, granting increased mobility and enhanced combat capabilities?",
+        options: ["Astra", "Reyna", "Phoenix", "Omen"],
+        answer: 2
+      },
+      {
+        question: "Which agent was a member of the Night Market before joining the Valorant Protocol?",
+        options: ["Yoru", "Sage", "Raze", "Killj  oy"],
+        answer: 1
+      },
+      {
+        question: "Which agent has ties to the Vandal Corporation and uses their resources to fight against the Valorant Protocol?",
+        options: ["Viper", "Brimstone", "Sova", "Cypher"],
+        answer: 1
+      },
+      {
+        question: "Which agent has a mysterious past, with rumors suggesting they were once a notorious underworld figure?",
+        options: ["Omen", "Jett", "Reyna", "Skye"],
+        answer: 1
+      },
+      {
+        question: "Which agent's origin story involves being saved by a pack of wolves in the mountains of Morocco?",
+        options: ["Phoenix", "Cypher", "Sova", "Reyna"],
+        answer: 3
+      },
+      {
+        question: "Which agent is a skilled hacker and cyberwarfare specialist, with a deep-seated distrust of authority?",
+        options: ["Killjoy", "Brimstone", "Viper", "Sage"],
+        answer: 1
+      },
+      {
+        question: "Which agent has a connection to the Radiant Academy and has undergone extensive training in tactical combat?",
+        options: ["Breach", "Jett", "Omen", "Skye"],
+        answer: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const quizContainer = document.getElementById('quiz');
+    const questionElement = document.getElementById('question');
+    const option1 = document.getElementById('option1');
+    const option2 = document.getElementById('option2');
+    const option3 = document.getElementById('option3');
+    const option4 = document.getElementById('option4');
+    const submitBtn = document.getElementById('submitBtn');
+    const resultContainer = document.getElementById('result');
+
+    function loadQuestion() {
+      const currentQuestionData = questions[currentQuestion];
+      questionElement.textContent = currentQuestionData.question;
+      option1.textContent = currentQuestionData.options[0];
+      option2.textContent = currentQuestionData.options[1];
+      option3.textContent = currentQuestionData.options[2];
+      option4.textContent = currentQuestionData.options[3];
+    }
+
+    function checkAnswer() {
+      const selectedOption = document.querySelector('input[name="option"]:checked');
+      if (!selectedOption) {
+        alert('Please select an option');
+        return;
+      }
+      
+      const answer = parseInt(selectedOption.value);
+      if (answer === questions[currentQuestion].answer) {
+        score++;
+      }
+      
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      quizContainer.style.display = 'none';
+      resultContainer.textContent = `You scored ${score} out of ${questions.length}`;
+    }
+
+    loadQuestion();
+
+    submitBtn.addEventListener('click', checkAnswer);
+    </script>
+</body>
+</html>
